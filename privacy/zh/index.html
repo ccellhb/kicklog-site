@@ -32,7 +32,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h3>个人资料和设置</h3>
 <ul><li>昵称、头像、年龄、体重、常用位置、收藏的球场和 App 设置。</li></ul>
 <h3>iPhone 定位（仅在你打开「到达球场提醒」时）</h3>
-<ul><li>系统在本机判断你是否到达收藏或常去的球场，这个位置不会上传。</li></ul>
+<ul><li>系统在本机判断你是否到达收藏或常去的球场。球场识别只在本机进行，踢迹不会在线查询球场。</li></ul>
 <h3>相册和本地网络</h3>
 <ul>
 <li>相册只用于保存你生成的分享卡。</li>
@@ -62,6 +62,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h2>4. 我们会发送给 Apple 的数据</h2>
 <ul>
 <li>天气：为了在比赛报告里显示天气，我们会把场地所在的大致区域（约 1 公里）和开赛时段发送给 Apple WeatherKit。不发送路线或精确位置。</li>
+<li>地图：热区卫星图和分享长图会从 Apple 地图加载球场周边的地图图块。这个请求会让 Apple 知道地图上显示的大致区域，受 Apple 隐私政策约束。踢迹不会保存这些信息，也不会发送到其他地方。</li>
 <li>iCloud 同步和好友共享由 Apple 的 CloudKit 完成，受 Apple 隐私政策约束。</li>
 <li>除此之外，我们不使用任何第三方分析、广告或追踪 SDK。</li>
 </ul>

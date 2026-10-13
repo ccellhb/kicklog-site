@@ -32,7 +32,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h3>Profile and settings</h3>
 <ul><li>Nickname, avatar, age, body mass, preferred position, saved pitches, and app settings.</li></ul>
 <h3>iPhone location (only when Pitch Arrival Reminders are on)</h3>
-<ul><li>The system checks on your iPhone whether you have arrived at a saved or regular pitch. This location is never uploaded.</li></ul>
+<ul><li>The system checks on your iPhone whether you have arrived at a saved or regular pitch. Pitch recognition runs on your iPhone only; KickLog does not look up pitches online.</li></ul>
 <h3>Photos and local network</h3>
 <ul>
 <li>Photos access is used only to save share cards you create.</li>
@@ -49,12 +49,12 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <ul>
 <li>Your nickname, avatar, and preferred position.</li>
 <li>Current and past season totals: matches, distance, time played, sprints, top speed, best score, and badge count.</li>
-<li>Only after you turn on Played Together detection (off by default): the start time of up to 5 matches from the last 14 days and the approximate pitch location (about 100 m). Routes and precise coordinates are never shared.</li>
+<li>Only after you turn on Detect Matches Together (off by default): the start time of up to 5 matches from the last 14 days and the approximate pitch location (about 100 m). Routes and precise coordinates are never shared.</li>
 <li>Friends you tag as playing together: the match time, their account identifier, and your distance, sprints, top speed, and score for that match.</li>
 </ul>
 <p>You can stop sharing at any time:</p>
 <ul>
-<li>Turn off Played Together detection on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
+<li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
 <li>Remove a played-together tag to delete that record.</li>
 <li>Remove a friend to stop sending them updates. Data already cached on their device cannot be deleted by us.</li>
 </ul>
@@ -62,6 +62,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h2>4. Data sent to Apple</h2>
 <ul>
 <li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit. Routes and precise locations are never sent.</li>
+<li>Maps: the heat map satellite view and the share long image load map tiles from Apple Maps for the area around the pitch. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. KickLog does not store this request or send it anywhere else.</li>
 <li>iCloud sync and friend sharing run on Apple CloudKit and are covered by Apple's Privacy Policy.</li>
 <li>We use no third-party analytics, advertising, or tracking SDKs.</li>
 </ul>
