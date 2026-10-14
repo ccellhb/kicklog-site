@@ -43,6 +43,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>On your devices.</li>
 <li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. We cannot access your iCloud content.</li>
 <li>In backup files you export yourself.</li>
+<li>About "expiry" of records in Apple's CloudKit public database: KickLog has no servers and no scheduled cleanup. Once a record expires, the recipient stops reading it. It is actually deleted only when the sender's device opens the app after expiry, so deletion may happen later than the expiry time. If the sender never opens the app again, the encrypted or hashed record may remain in Apple's public database. All times below work this way.</li>
 </ul>
 <h2>3. Sharing with friends</h2>
 <p>When you add a friend, your friend card is shared through iCloud with the friends you have shared it with. Only they can see:</p>
@@ -56,7 +57,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <ul>
 <li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
 <li>Remove a played-together tag to delete that record.</li>
-<li>Remove a friend to stop sending them updates. Their app will tell them you removed them and keep the data you last synced; they decide whether to delete it. To notify them, a temporary record is left in Apple's CloudKit public database. It holds only a salted hash of their account and is cleared within about 2 days. Data already cached on their device cannot be deleted by us.</li>
+<li>Remove a friend to stop sending them updates. Their app will tell them you removed them and keep the data you last synced; they decide whether to delete it. To notify them, a temporary record is left in Apple's CloudKit public database. It holds only a salted hash of their account and expires after 24 hours. Your device deletes it about 24 hours after it expires, so it is usually deleted after about 2 days. Data already cached on their device cannot be deleted by us.</li>
 <li>Friend data is kept separate for each Apple ID.</li>
 </ul>
 <p>Only send your invite link to the person you want to add.</p>
@@ -72,9 +73,9 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>Only the captain can invite. Before you join, the app tells you your data will be visible to the whole team.</li>
 <li>An in-person QR code is valid for 10 minutes and works once. A sent link is valid for 7 days and works once. Regenerating the link cancels all unused links.</li>
 <li>Invite tickets are stored in the captain's private iCloud database.</li>
-<li>The captain can also invite a friend directly. The invite leaves one temporary record in Apple's CloudKit public database. It holds only a salted hash of the invitee's account and encrypted invite info (the team, team name, captain's nickname, and share link), with no readable account or name. The invite link works only for the invitee's account and expires after 7 days. The captain clears invites that get no response. Canceling an invite deletes this record.</li>
+<li>The captain can also invite a friend directly. The invite leaves one temporary record in Apple's CloudKit public database. It holds only a salted hash of the invitee's account and encrypted invite info (the team, team name, captain's nickname, and share link), with no readable account or name. The invite link works only for the invitee's account and expires after 7 days. After expiry, the captain's device clears invites that get no response. Canceling an invite deletes this record.</li>
 <li>If the invitee declines, a temporary record that expires after about 24 hours is left in the public database. It holds only a salted hash of the captain's account and encrypted decline info (the team and the decliner's account and nickname), with no readable account or name. Invite and decline alerts are local notifications on your device, not server push notifications.</li>
-<li>Temporary records in Apple's CloudKit public database hold only hashes or salted hashes, encrypted invite info, and an expiry time. They contain no readable account, nickname, or team name. All of them expire; removal notices expire after 1 day.</li>
+<li>Temporary records in Apple's CloudKit public database hold only hashes or salted hashes, encrypted invite info, and an expiry time. They contain no readable account, nickname, or team name. The one exception is the member-removal notice: it holds a salted hash of the removed member's account and the team ID in plain text (a random UUID, not encrypted). It expires after 24 hours and is deleted by the captain's device on its next refresh after expiry. Invite and request records also carry short expiry times.</li>
 </ul>
 <p>Team match tags and team match reports stay on your device only.</p>
 <h3>Leaving and dissolving</h3>
