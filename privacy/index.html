@@ -56,7 +56,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <ul>
 <li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
 <li>Remove a played-together tag to delete that record.</li>
-<li>Remove a friend to stop sending them updates. Data already cached on their device cannot be deleted by us.</li>
+<li>Remove a friend to stop sending them updates. Their app will tell them you removed them and keep the data you last synced; they decide whether to delete it. To notify them, a temporary record is left in Apple's CloudKit public database. It holds only a salted hash of their account and is cleared within about 2 days. Data already cached on their device cannot be deleted by us.</li>
 <li>Friend data is kept separate for each Apple ID.</li>
 </ul>
 <p>Only send your invite link to the person you want to add.</p>
