@@ -43,6 +43,8 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>On your devices.</li>
 <li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. We cannot access your iCloud content.</li>
 <li>In backup files you export yourself.</li>
+<li>Message center notices: to let someone know about a new friend, a teammate joining or leaving, a team being dissolved, a captain cancelling an invite, a declined invite, being removed from a team, being removed as a friend, or a withdrawn played-together tag, KickLog leaves a temporary record in Apple's CloudKit public database. The only publicly readable parts are a salted, non-reversible hash of the recipient (from their account identifier or team ID) and an expiry time. Everything else is encrypted and readable only by the recipient: the notice type and the sender's account identifier and nickname; for team notices, the team ID and team name; for withdrawal notices, the match start time, the original tag time (if any), and the withdrawal time. A withdrawal notice goes only to the friend it concerns. Records expire after up to 14 days (14 days for withdrawal notices, 7 days for others) and are then deleted by the sender's device. Apple uses the record's built-in creator information to verify the sender. Withdrawal notices not yet sent wait in a queue on your device (friend ID, match start, tag time, and withdrawal time; up to 60 entries, kept 14 days, deleted once sent).</li>
+<li>Your message center list is stored only on your device, not in iCloud.</li>
 </ul>
 <h2>3. Sharing with friends</h2>
 <p>When you add a friend, your friend card is shared through iCloud with the friends you have shared it with. Only they can see:</p>
@@ -51,12 +53,11 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>Current and past season totals: matches, distance, time played, sprints, top speed, best score, and badge count.</li>
 <li>Only after you turn on Detect Matches Together (off by default): the start time of up to 5 matches from the last 14 days and the approximate pitch location (about 100 m). Routes and precise coordinates are never shared.</li>
 <li>Friends you tag as playing together: the match time, their account identifier, and your distance, sprints, top speed, and score for that match.</li>
-<li>Played-together tags you withdraw: which friend the tag was withdrawn with (their account identifier), the match start time, when the tag was originally made (if available), and when it was withdrawn. This means all your friends, not only that friend, can see with whom and when you cancelled a played-together tag. Up to 60 records are kept, for 14 days. A copy is also stored on your device.</li>
 </ul>
 <p>You can stop sharing at any time:</p>
 <ul>
 <li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
-<li>Remove a played-together tag to delete that record.</li>
+<li>Remove a played-together tag to delete that record. The tag on your friend's side is withdrawn automatically, and they get a message center notice.</li>
 <li>Remove a friend to stop sending them updates. Their app will tell them you removed them and keep the data you last synced; they decide whether to delete it. To notify them, a temporary record is left in Apple's CloudKit public database. It holds only a salted hash of their account and is cleared within about 2 days. Data already cached on their device cannot be deleted by us.</li>
 <li>Friend data is kept separate for each Apple ID.</li>
 </ul>
@@ -89,6 +90,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit. Routes and precise locations are never sent.</li>
 <li>Maps: the heat map satellite view and the share long image load map tiles from Apple Maps for the area around the pitch. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. KickLog does not store this request or send it anywhere else.</li>
 <li>iCloud sync, friend sharing, and team sharing run on Apple CloudKit and are covered by Apple's Privacy Policy.</li>
+<li>Push notifications: to receive message center notices promptly, the app creates a CloudKit subscription for your recipient hash, and Apple delivers the push notifications.</li>
 <li>We use no third-party analytics, advertising, or tracking SDKs.</li>
 </ul>
 <h2>6. Children</h2>
