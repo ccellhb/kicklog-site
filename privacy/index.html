@@ -57,25 +57,50 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
 <li>Remove a played-together tag to delete that record.</li>
 <li>Remove a friend to stop sending them updates. Data already cached on their device cannot be deleted by us.</li>
+<li>Friend data is kept separate for each Apple ID.</li>
 </ul>
 <p>Only send your invite link to the person you want to add.</p>
-<h2>4. Data sent to Apple</h2>
+<h2>4. Sharing with your team</h2>
+<p>Team data is stored in the captain's iCloud shared zone (Apple CloudKit). KickLog has no servers. All team members can see:</p>
+<ul>
+<li>Team name, color, badge, the captain's user ID, whether the captain's membership is active, and creation time.</li>
+<li>For each member: user ID, nickname, avatar, preferred position, and current-season matches, distance, time played, sprints, top speed, best score, and update time.</li>
+</ul>
+<p>Not shared with your team: badges, location, heat map, individual matches, and past seasons.</p>
+<h3>Invites</h3>
+<ul>
+<li>Only the captain can invite. Before you join, the app tells you your data will be visible to the whole team.</li>
+<li>An in-person QR code is valid for 10 minutes and works once. A sent link is valid for 7 days and works once. Regenerating the link cancels all unused links.</li>
+<li>Invite tickets are stored in the captain's private iCloud database.</li>
+<li>The captain can also invite a friend directly. The invite leaves one temporary record in Apple's CloudKit public database. It holds only a salted hash of the invitee's account and encrypted invite info (the team, team name, captain's nickname, and share link), with no readable account or name. The invite link works only for the invitee's account and expires after 7 days. The captain clears invites that get no response. Canceling an invite deletes this record.</li>
+<li>If the invitee declines, a temporary record that expires after about 24 hours is left in the public database. It holds only a salted hash of the captain's account and encrypted decline info (the team and the decliner's account and nickname), with no readable account or name. Invite and decline alerts are local notifications on your device, not server push notifications.</li>
+<li>Temporary records in Apple's CloudKit public database hold only hashes or salted hashes, encrypted invite info, and an expiry time. They contain no readable account, nickname, or team name. All of them expire; removal notices expire after 1 day.</li>
+</ul>
+<p>Team match tags and team match reports stay on your device only.</p>
+<h3>Leaving and dissolving</h3>
+<ul>
+<li>When you leave a team, your published data is deleted first. If that fails, it is retried.</li>
+<li>When the captain removes a member, the captain deletes that member's data.</li>
+<li>If the captain leaves, the team is dissolved and the whole team zone is deleted.</li>
+</ul>
+<h2>5. Data sent to Apple</h2>
 <ul>
 <li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit. Routes and precise locations are never sent.</li>
 <li>Maps: the heat map satellite view and the share long image load map tiles from Apple Maps for the area around the pitch. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. KickLog does not store this request or send it anywhere else.</li>
-<li>iCloud sync and friend sharing run on Apple CloudKit and are covered by Apple's Privacy Policy.</li>
+<li>iCloud sync, friend sharing, and team sharing run on Apple CloudKit and are covered by Apple's Privacy Policy.</li>
 <li>We use no third-party analytics, advertising, or tracking SDKs.</li>
 </ul>
-<h2>5. Children</h2>
+<h2>6. Children</h2>
 <p>We do not knowingly collect children's contact information.</p>
-<h2>6. Deleting your data</h2>
+<h2>7. Deleting your data</h2>
 <ul>
 <li>Delete matches or friends in the app.</li>
+<li>Leaving a team deletes the data you published to it; if the captain leaves, the team is dissolved.</li>
 <li>Deleting the app removes its data from the device.</li>
 <li>Delete KickLog's iCloud data in iPhone Settings &gt; your name &gt; iCloud &gt; Manage Account Storage.</li>
 <li>Workouts saved to Health can be deleted in the Health app.</li>
 </ul>
-<h2>7. Changes and contact</h2>
+<h2>8. Changes and contact</h2>
 <p>We will update the effective date and notify you in the app when this policy changes materially. Questions? Email <a href="mailto:kicklogsupport@gmail.com">kicklogsupport@gmail.com</a>.</p>
 <footer><a href="zh/" hreflang="zh-Hans">阅读中文版</a> · <a href="../">KickLog 踢迹</a></footer>
 </main></body></html>
