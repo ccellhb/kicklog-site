@@ -19,7 +19,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <body><main>
 <p class="nav"><a href="../">KickLog 踢迹</a> · <a href="zh/" hreflang="zh-Hans">中文</a></p>
 <h1>KickLog Privacy Policy</h1>
-<p class="meta">Effective date: 2026-10-13 · Last updated: 2026-10-13</p>
+<p class="meta">Effective date: 2026-10-13 · Last updated: 2026-10-15</p>
 <p>KickLog records soccer matches with Apple Watch. We run no servers of our own, show no ads, do not track you, and never sell data. Your data stays on your devices and in your own iCloud.</p>
 <h2>1. Data we use</h2>
 <h3>Match and health data</h3>
@@ -64,17 +64,20 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 </ul>
 <p>Only send your invite link to the person you want to add.</p>
 <h2>4. Sharing with your team</h2>
-<p>Team data is stored in the captain's iCloud shared zone (Apple CloudKit). KickLog has no servers. All team members can see:</p>
+<p>Team details and the roster live in the captain's iCloud (an Apple CloudKit shared zone); members can read but not change them. Each member's season stats and photo are stored by that member in Apple's CloudKit public database, encrypted so only teammates can open them; anyone else sees only scrambled data. Record names use irreversible codes only, with no account or name. Apple automatically notes which account created each record (an anonymous, app-specific ID); we use it to confirm the data came from a team member. KickLog has no servers. All team members can see:</p>
 <ul>
 <li>Team name, color, badge, the captain's user ID, whether the captain's membership is active, and creation time, plus content fingerprints of the badge and member avatar images (used only to tell whether an image has changed).</li>
 <li>For each member: user ID, nickname, avatar, preferred position, and current-season matches, distance, time played, sprints, top speed, best score, and update time.</li>
 </ul>
+<p>The roster lists the account IDs of members and of people invited but not yet joined; only the captain can edit it, and team members can see it.</p>
+<p>Your photo is cropped on your phone to a small square (max 64 KB), encrypted for teammates only, and uploaded only when it changes.</p>
 <p>Not shared with your team: badges, location, heat map, individual matches, and past seasons.</p>
 <h3>Invites</h3>
 <ul>
 <li>Only the captain can invite. Before you join, the app tells you your data will be visible to the whole team.</li>
 <li>An in-person QR code is valid for 10 minutes and works once. A sent link is valid for 7 days and works once. Regenerating the link cancels all unused links.</li>
 <li>Invite tickets are stored in the captain's private iCloud database.</li>
+<li>Invite links hold only the captain's account ID, a one-time random code and an expiry time, with no team info; the team info is sent to you in an encrypted reply after you join.</li>
 <li>The captain can also invite a friend directly. The invite leaves one temporary record in Apple's CloudKit public database. It holds only an irreversible code derived from the invitee's account and encrypted invite info (the team, team name, captain's nickname, and share link), with no readable account or name. The invite link works only for the invitee's account and expires after 7 days. After expiry, the captain's device clears invites that get no response. Canceling an invite deletes this record.</li>
 <li>If the invitee declines, a temporary record that expires after about 24 hours is left in the public database. It holds only an irreversible code derived from the captain's account and encrypted decline info (the team, the decliner's account and nickname, and which kind of reply it is), with no readable account or name. Invite and decline alerts are local notifications on your device, not server push notifications.</li>
 <li>Temporary records in Apple's CloudKit public database hold only irreversible codes, encrypted info, and an expiry time. They contain no readable account, nickname, or team name. The member-removal notice holds only an irreversible code derived from the removed member's account and the team ID in encrypted form (only team members can decrypt it); the team ID is no longer stored in plain text. It expires after 24 hours and is deleted by the captain's device on its next refresh after expiry. Invite and request records also carry short expiry times.</li>
@@ -87,8 +90,8 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h3>Leaving and dissolving</h3>
 <ul>
 <li>When you leave a team, your published data is deleted first. If that fails, it is retried.</li>
-<li>When the captain removes a member, the captain deletes that member's data.</li>
-<li>If the captain leaves, the team is dissolved and the whole team zone is deleted.</li>
+<li>Removing a member deletes no one's data. The removed member's earlier data is no longer shown to the team, and the captain changes the encryption so they can't see later team data.</li>
+<li>If the captain leaves, the team is dissolved. Dissolving deletes the team details, the roster and the captain's own data in the public database. Other members' encrypted data stays in the public database, but what's needed to open it is deleted with the team, so no one can read it and it is no longer shown.</li>
 </ul>
 <h2>5. Data sent to Apple</h2>
 <ul>
@@ -103,7 +106,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h2>7. Deleting your data</h2>
 <ul>
 <li>Delete matches or friends in the app.</li>
-<li>Leaving a team deletes the data you published to it; if the captain leaves, the team is dissolved.</li>
+<li>Leaving a team deletes the data you published to it; if the captain leaves, the team is dissolved. Removing a member does not delete that member's data.</li>
 <li>Deleting the app removes its data from the device.</li>
 <li>Delete KickLog's iCloud data in iPhone Settings &gt; your name &gt; iCloud &gt; Manage Account Storage.</li>
 <li>Workouts saved to Health can be deleted in the Health app.</li>
