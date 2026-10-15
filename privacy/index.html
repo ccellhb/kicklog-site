@@ -26,13 +26,17 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <ul>
 <li>Location (distance, route, heat map), heart rate, steps, and speed recorded by Apple Watch during a match.</li>
 <li>Heart rate, resting heart rate, date of birth, sex, body mass, running speed, steps, and past Soccer workouts read from Health, used to calculate match stats, heart-rate zones, calories, and Match Form.</li>
+<li>You can import past Soccer workouts from Health into KickLog sessions on your device. If an import overlaps a Watch recording, the Watch session is kept. Imported sessions may lack stints or attack direction and are marked incomplete.</li>
 <li>Each match is saved to Health as a Soccer workout.</li>
 <li>Data read from Health is never used for advertising or marketing and is never shared with third parties.</li>
 </ul>
 <h3>Profile and settings</h3>
 <ul><li>Nickname, avatar, age, body mass, preferred position, saved pitches, and app settings.</li></ul>
-<h3>iPhone location (only when Pitch Arrival Reminders are on)</h3>
-<ul><li>The system checks on your iPhone whether you have arrived at a saved or regular pitch. Pitch recognition runs on your iPhone only; KickLog does not look up pitches online.</li></ul>
+<h3>iPhone location</h3>
+<ul>
+<li>While Using: to recognize your pitch, support local weather lookups (WeatherKit receives only an about 1 km pitch cell derived from the match, not continuous tracking), and show satellite maps around the pitch. Match track and distance are still recorded on Apple Watch.</li>
+<li>Always (only if you turn on Pitch Arrival Reminders): the system checks on your iPhone whether you have arrived at a saved pitch and can remind you to start recording. That check happens on your iPhone; KickLog has no server of its own that receives this location. KickLog does not look up pitches online.</li>
+</ul>
 <h3>Photos and local network</h3>
 <ul>
 <li>Photos access is used only to save share cards you create.</li>
@@ -42,7 +46,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <ul>
 <li>On your devices.</li>
 <li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. We cannot access your iCloud content.</li>
-<li>In backup files you export yourself.</li>
+<li>In backup files you export yourself. Manual backups mainly include your match sessions. Your message list and some on-device helper state may not be included; check what the export screen lists when you create a backup.</li>
 <li>Message center notices: to let someone know about a new friend, a teammate joining or leaving, a team being dissolved, a captain cancelling an invite, a declined invite, being removed from a team, being removed as a friend, or a withdrawn played-together tag, KickLog leaves a temporary record in Apple's CloudKit public database. The only publicly readable parts are an irreversible code representing the recipient (derived from their account identifier or team ID; it can't be turned back into either) and an expiry time. Everything else is encrypted and readable only by the recipient: the notice type and the sender's account identifier and nickname; for team notices, the team ID and team name; for withdrawal notices, the match start time, the original tag time (if any), and the withdrawal time. A withdrawal notice goes only to the friend it concerns. Records expire after up to 14 days (14 days for withdrawal notices, 7 days for others) and are then deleted by the sender's device. Apple uses the record's built-in creator information to verify the sender. Withdrawal notices not yet sent wait in a queue on your device (friend ID, match start, tag time, and withdrawal time; up to 60 entries, kept 14 days, deleted once sent).</li>
 <li>Your message center list is stored only on your device, not in iCloud.</li>
 <li>About "expiry" of records in Apple's CloudKit public database: KickLog has no servers and no scheduled cleanup. Once a record expires, the recipient stops reading it. It is actually deleted only when the sender's device opens the app after expiry, so deletion may happen later than the expiry time. If the sender never opens the app again, the encrypted or encoded record may remain in Apple's public database. All times below work this way.</li>
@@ -60,9 +64,16 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
 <li>Remove a played-together tag to delete that record. The tag on your friend's side is withdrawn automatically, and they get a message center notice.</li>
 <li>Remove a friend to stop sending them updates. Their app will tell them you removed them and keep the data you last synced; they decide whether to delete it. To notify them, a temporary record is left in Apple's CloudKit public database. It holds only an irreversible code derived from their account and expires after 24 hours. Your device deletes it about 24 hours after it expires, so it is usually deleted after about 2 days. Data already cached on their device cannot be deleted by us.</li>
-<li>Friend data is kept separate for each Apple ID.</li>
+<li>Friend and team data are tied to the iCloud account you are signed into. If you switch or sign out of iCloud, you may temporarily not see friends from the previous account. Avoid switching accounts without a backup. We are improving per-account isolation and restore.</li>
 </ul>
 <p>Only send your invite link to the person you want to add.</p>
+<h3>Adding friends</h3>
+<ul>
+<li>Face to Face, QR code, or link invites are one-time (a link is short-lived and works only once). Send them only to the person you want to add.</li>
+<li>While adding a friend, KickLog may leave temporary records in Apple's CloudKit public database. What is publicly readable is mainly irreversible codes and an expiry time; the rest is encrypted. After expiry, the sender's device deletes them (timing follows the expiry note above).</li>
+<li>If a mutual add is interrupted, KickLog may put someone who already entered the handshake back on your friend share without you tapping Add Friend again, so the handshake can finish. Someone you deliberately removed is not added back automatically.</li>
+<li>Friend requests and confirmations may show a lock-screen notification with fixed text that contains no nickname or account.</li>
+</ul>
 <h2>4. Sharing with your team</h2>
 <p>Team details and the roster live in the captain's iCloud (an Apple CloudKit shared zone); members can read but not change them. Each member's season stats and photo are stored by that member in Apple's CloudKit public database, encrypted so only teammates can open them; anyone else sees only scrambled data. Record names use irreversible codes only, with no account or name. Apple automatically notes which account created each record (an anonymous, app-specific ID); we use it to confirm the data came from a team member. KickLog has no servers. All team members can see:</p>
 <ul>
@@ -90,7 +101,8 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h3>Leaving and dissolving</h3>
 <ul>
 <li>When you leave a team, your published data is deleted first. If that fails, it is retried.</li>
-<li>Removing a member deletes no one's data. The removed member's earlier data is no longer shown to the team, and the captain changes the encryption so they can't see later team data.</li>
+<li>Removing a member deletes no one's data automatically. The removed member's earlier data is no longer shown to the team, and the captain changes the encryption so they can't see later team data. After removal, you may still see anonymous record IDs, counts and update times for current members in the public database, but not their stats or photos (still encrypted; you no longer have the team key).</li>
+<li>After the captain removes you, or a team is dissolved, your iPhone keeps a "Removed from Team" / "Team Dissolved" card. You can tap "Delete My Data in This Team" to delete only your own encrypted season stats and photo from the public database. The name card can stay or be removed by you. Older frozen cards that never stored your record names may not offer this delete control; ciphertext nobody can decrypt may remain until Apple expires or removes it.</li>
 <li>If the captain leaves, the team is dissolved. Dissolving deletes the team details, the roster and the captain's own data in the public database. Other members' encrypted data stays in the public database, but what's needed to open it is deleted with the team, so no one can read it and it is no longer shown.</li>
 </ul>
 <h2>5. Data sent to Apple</h2>
@@ -106,7 +118,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h2>7. Deleting your data</h2>
 <ul>
 <li>Delete matches or friends in the app.</li>
-<li>Leaving a team deletes the data you published to it; if the captain leaves, the team is dissolved. Removing a member does not delete that member's data.</li>
+<li>Leaving a team deletes the data you published to it; if the captain leaves, the team is dissolved. Removing a member does not automatically delete that member's data; the removed member can delete their own team stats and photo from the "Removed from Team" or "Team Dissolved" card.</li>
 <li>Deleting the app removes its data from the device.</li>
 <li>Delete KickLog's iCloud data in iPhone Settings &gt; your name &gt; iCloud &gt; Manage Account Storage.</li>
 <li>Workouts saved to Health can be deleted in the Health app.</li>
