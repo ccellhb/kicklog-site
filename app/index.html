@@ -6,14 +6,21 @@
 <meta name="theme-color" content="#101310">
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://ccellhb.github.io/kicklog-site/app/">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KickLog 踢迹">
 <meta property="og:title" content="KickLog 踢迹">
 <meta property="og:description" content="用 Apple Watch 记录你的每一场球：跑动、冲刺、热区和评分，踢完一键分享。Track every match with Apple Watch: distance, sprints, heatmap and ratings, then share in one tap.">
 <meta property="og:url" content="https://ccellhb.github.io/kicklog-site/app/">
+<meta property="og:image" content="https://ccellhb.github.io/kicklog-site/app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ccellhb.github.io/kicklog-site/app/og.png">
 <style>
 :root{color-scheme:dark}
 *{box-sizing:border-box}
@@ -24,8 +31,7 @@ a{color:#C5F467}
 .lang{background:none;border:1px solid #2A302A;color:#AEB5A8;font:inherit;font-size:.88em;padding:4px 12px;border-radius:999px;cursor:pointer}
 .lang:hover{color:#F5F7F2;border-color:#AEB5A8}
 .hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 0}
-.mark{width:72px;height:72px;border-radius:18px;background:#C5F467;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.mark svg{width:42px;height:42px}
+.mark{width:72px;height:72px;border-radius:22.37%;display:block;margin:0 0 20px;box-shadow:0 0 0 1px #2A302A}
 h1{font-size:2em;line-height:1.25;margin:0 0 .3em}
 h1 .alt{color:#AEB5A8;font-weight:500;font-size:.6em;margin-left:.3em}
 .intro{font-size:1.08em;margin:0 0 1.2em}
@@ -46,14 +52,14 @@ footer a{color:#AEB5A8}
 <div class="wx" id="wx" role="alert"><span class="arrow" aria-hidden="true">↗</span><span data-i18n="wechat">WeChat blocks TestFlight and App Store links. Tap <b>···</b> at the top right and choose <b>Open in browser</b>.</span></div>
 <div class="top"><button class="lang" id="lang" type="button" lang="zh-Hans">中文</button></div>
 <section class="hero">
-<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#101310" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.2l4.1 3-1.6 4.8h-5l-1.6-4.8z" fill="#101310"/><path d="M12 7.2V2.6M16.1 10.2l4.4-1.4M14.5 15l2.7 3.8M9.5 15l-2.7 3.8M7.9 10.2L3.5 8.8"/></svg></div>
+<img class="mark" src="icon-192.png" width="72" height="72" alt="">
 <h1><span data-i18n="name">KickLog</span><span class="alt" data-i18n="altName">踢迹</span></h1>
 <p class="intro" data-i18n="intro">Track every match with Apple Watch: distance, sprints, heatmap and ratings, then share in one tap.</p>
 <ul class="chips">
 <li data-i18n="f1">Distance</li><li data-i18n="f2">Sprints</li><li data-i18n="f3">Heatmap</li><li data-i18n="f4">Ratings</li>
 </ul>
 <a class="btn" id="cta" href="https://testflight.apple.com/join/pycKpd4p" data-i18n="ctaBeta">Join the beta</a>
-<p class="note" id="note" data-i18n="noteBeta">Free TestFlight beta. Requires iPhone and Apple Watch.</p>
+<p class="note" id="note" data-i18n="noteBeta">Free TestFlight beta. Requires iPhone; record with Apple Watch.</p>
 </section>
 <footer>
 <span data-i18n="privacy">Privacy Policy</span>: <a href="../privacy/" hreflang="en">English</a> · <a href="../privacy/zh/" hreflang="zh-Hans">中文</a><br>
@@ -79,8 +85,8 @@ const T = {
     name: 'KickLog', altName: '踢迹',
     intro: 'Track every match with Apple Watch: distance, sprints, heatmap and ratings, then share in one tap.',
     f1: 'Distance', f2: 'Sprints', f3: 'Heatmap', f4: 'Ratings',
-    ctaBeta: 'Join the beta', noteBeta: 'Free TestFlight beta. Requires iPhone and Apple Watch.',
-    ctaStore: 'Download on the App Store', noteStore: 'Requires iPhone and Apple Watch.',
+    ctaBeta: 'Join the beta', noteBeta: 'Free TestFlight beta. Requires iPhone; record with Apple Watch.',
+    ctaStore: 'Download on the App Store', noteStore: 'Requires iPhone; record with Apple Watch.',
     wechat: 'WeChat blocks TestFlight and App Store links. Tap <b>···</b> at the top right and choose <b>Open in browser</b>.',
     privacy: 'Privacy Policy', toggle: '中文', title: 'KickLog 踢迹 · Football tracker for Apple Watch'
   },
@@ -88,8 +94,8 @@ const T = {
     name: '踢迹', altName: 'KickLog',
     intro: '用 Apple Watch 记录你的每一场球：跑动、冲刺、热区和评分，踢完一键分享。',
     f1: '跑动', f2: '冲刺', f3: '热区', f4: '评分',
-    ctaBeta: '加入内测', noteBeta: '通过 TestFlight 免费内测，需要 iPhone 和 Apple Watch。',
-    ctaStore: '在 App Store 下载', noteStore: '需要 iPhone 和 Apple Watch。',
+    ctaBeta: '加入内测', noteBeta: '通过 TestFlight 免费内测，需要 iPhone，搭配 Apple Watch 记录。',
+    ctaStore: '在 App Store 下载', noteStore: '需要 iPhone，搭配 Apple Watch 记录。',
     wechat: '微信内无法打开 TestFlight / App Store 链接。请点右上角 <b>···</b>，选择<b>在浏览器中打开</b>。',
     privacy: '隐私条款', toggle: 'English', title: '踢迹 KickLog · Apple Watch 足球记录'
   }
