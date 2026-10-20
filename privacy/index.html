@@ -19,8 +19,8 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <body><main>
 <p class="nav"><a href="../">KickLog 踢迹</a> · <a href="zh/" hreflang="zh-Hans">中文</a></p>
 <h1>KickLog Privacy Policy</h1>
-<p class="meta">Effective date: 2026-10-19 · Last updated: 2026-10-19</p>
-<p>KickLog records football matches with Apple Watch. We run no servers of our own, show no ads, do not track you, and never sell data. Your data stays on your devices and in your own iCloud.</p>
+<p class="meta">Effective date: 2026-10-19 · Last updated: 2026-10-20</p>
+<p>KickLog records football matches with Apple Watch. We run no servers of our own, show no ads, do not track you, and never sell data. Your data stays on your devices. Some of it syncs to your own iCloud, as described below.</p>
 <h2>1. Data we use</h2>
 <h3>Match and health data</h3>
 <ul>
@@ -31,7 +31,10 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>Data read from Health is never used for advertising or marketing and is never shared with third parties.</li>
 </ul>
 <h3>Profile and settings</h3>
-<ul><li>Nickname, avatar, age, body mass, preferred position, saved pitches, and app settings.</li></ul>
+<ul>
+<li>Nickname and avatar are stored on your device. When iCloud sync is on, they sync to your own private iCloud (CloudKit private database). They are included in manual backups. They do not appear on share cards and are not sent anywhere else.</li>
+<li>Age, body mass, preferred position, saved pitches, and app settings.</li>
+</ul>
 <h3>iPhone location</h3>
 <ul>
 <li>While Using: to recognize your pitch, support local weather lookups (WeatherKit receives only an about 1 km pitch cell derived from the match, not continuous tracking), and show satellite maps around the pitch. Match track and distance are still recorded on Apple Watch.</li>
@@ -44,13 +47,15 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <h2>2. Where data is stored</h2>
 <ul>
 <li>On your devices.</li>
-<li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. We cannot access your iCloud content.</li>
-<li>In backup files you export yourself. Manual backups mainly include your match sessions. Some on-device helper state may not be included; check what the export screen lists when you create a backup.</li>
+<li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. When iCloud sync is on, your nickname and avatar sync to this private database, and so does your saved pitch library (names, coordinates, and boundaries). Age, body mass, sex, resting heart rate, and achievements stay on your device and are not synced to iCloud. We cannot access your iCloud content.</li>
+<li>In backup files you export yourself. Backups include match records, your profile (nickname, avatar, age, body mass, sex, resting heart rate, and position), achievements, and some settings (language, theme, and in-match reminders). They do not include your saved pitch library, some on-device caches and settings, or leftover on-device state from retired social features.</li>
+<li>Keep backup files safe. They contain health-related data.</li>
 </ul>
 <h2>3. Data sent to Apple</h2>
+<p>KickLog does not connect to any developer-run or third-party server. It only uses Apple services: the iCloud private database, Apple Maps tiles, and WeatherKit (including WeatherKit's attribution logo). External links, such as the privacy page and the feedback email, open only when you tap them.</p>
 <ul>
-<li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit. Routes and precise locations are never sent.</li>
-<li>Maps: the heat map satellite view and the share long image load map tiles from Apple Maps for the area around the pitch. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. KickLog does not store this request or send it anywhere else.</li>
+<li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit, and we load WeatherKit's attribution logo. Routes and precise locations are never sent.</li>
+<li>Maps: the heat map satellite view, and share cards and share long images when a satellite background is chosen, load map tiles from Apple Maps. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. Nothing is uploaded. KickLog does not store this request or send it anywhere else.</li>
 <li>iCloud sync runs on Apple CloudKit and is covered by Apple's Privacy Policy.</li>
 <li>We use no third-party analytics, advertising, or tracking SDKs.</li>
 </ul>
