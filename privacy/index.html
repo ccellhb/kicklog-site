@@ -19,7 +19,7 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <body><main>
 <p class="nav"><a href="../">KickLog 踢迹</a> · <a href="zh/" hreflang="zh-Hans">中文</a></p>
 <h1>KickLog Privacy Policy</h1>
-<p class="meta">Effective date: 2026-10-13 · Last updated: 2026-10-15</p>
+<p class="meta">Effective date: 2026-10-19 · Last updated: 2026-10-19</p>
 <p>KickLog records football matches with Apple Watch. We run no servers of our own, show no ads, do not track you, and never sell data. Your data stays on your devices and in your own iCloud.</p>
 <h2>1. Data we use</h2>
 <h3>Match and health data</h3>
@@ -37,57 +37,30 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <li>While Using: to recognize your pitch, support local weather lookups (WeatherKit receives only an about 1 km pitch cell derived from the match, not continuous tracking), and show satellite maps around the pitch. Match track and distance are still recorded on Apple Watch.</li>
 <li>Always (only if you turn on Pitch Arrival Reminders): the system checks on your iPhone whether you have arrived at a saved pitch and can remind you to start recording. That check happens on your iPhone; KickLog has no server of its own that receives this location. KickLog does not look up pitches online.</li>
 </ul>
-<h3>Photos and local network</h3>
+<h3>Photos</h3>
 <ul>
 <li>Photos access is used only to save share cards you create.</li>
-<li>Local network, Bluetooth, and Wi‑Fi are used only while the Face to Face screen is open, to find friends next to you. Only your nickname, a small avatar thumbnail, an irreversible code derived from your account, and a one-time token are exchanged, encrypted end to end.</li>
 </ul>
 <h2>2. Where data is stored</h2>
 <ul>
 <li>On your devices.</li>
 <li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. We cannot access your iCloud content.</li>
-<li>In backup files you export yourself. Manual backups mainly include your match sessions. Your message list and some on-device helper state may not be included; check what the export screen lists when you create a backup.</li>
-<li>Message center notices: to let someone know about a new friend, being removed as a friend, or a withdrawn played-together tag, KickLog leaves a temporary record in Apple's CloudKit public database. The only publicly readable parts are an irreversible code representing the recipient (derived from their account identifier; it can't be turned back into an account) and an expiry time. Everything else is encrypted and readable only by the recipient: the notice type and the sender's account identifier and nickname; for withdrawal notices, the match start time, the original tag time (if any), and the withdrawal time. A withdrawal notice goes only to the friend it concerns. Records expire after up to 14 days (14 days for withdrawal notices, 7 days for others) and are then deleted by the sender's device. Apple uses the record's built-in creator information to verify the sender. Withdrawal notices not yet sent wait in a queue on your device (friend ID, match start, tag time, and withdrawal time; up to 60 entries, kept 14 days, deleted once sent).</li>
-<li>Your message center list is stored only on your device, not in iCloud.</li>
-<li>About "expiry" of records in Apple's CloudKit public database: KickLog has no servers and no scheduled cleanup. Once a record expires, the recipient stops reading it. It is actually deleted only when the sender's device opens the app after expiry, so deletion may happen later than the expiry time. If the sender never opens the app again, the encrypted or encoded record may remain in Apple's public database. All times below work this way.</li>
+<li>In backup files you export yourself. Manual backups mainly include your match sessions. Some on-device helper state may not be included; check what the export screen lists when you create a backup.</li>
 </ul>
-<h2>3. Sharing with friends</h2>
-<p>When you add a friend, your friend card is shared through iCloud with the friends you have shared it with. Only they can see:</p>
-<ul>
-<li>Your nickname, avatar, and preferred position.</li>
-<li>Current and past season totals: matches, distance, time played, sprints, top speed, best score, and badge count.</li>
-<li>Only after you turn on Detect Matches Together (off by default): the start time of up to 5 matches from the last 14 days and the approximate pitch location (about 100 m). Routes and precise coordinates are never shared.</li>
-<li>Friends you tag as playing together: the match time, their account identifier, and your distance, sprints, top speed, and score for that match.</li>
-</ul>
-<p>You can stop sharing at any time:</p>
-<ul>
-<li>Turn off Detect Matches Together on the Friends screen to stop sharing match times and pitch locations; any already shared are removed.</li>
-<li>Remove a played-together tag to delete that record. The tag on your friend's side is withdrawn automatically, and they get a message center notice.</li>
-<li>Remove a friend to stop sending them updates. Their app will tell them you removed them and keep the data you last synced; they decide whether to delete it. To notify them, a temporary record is left in Apple's CloudKit public database. It holds only an irreversible code derived from their account and expires after 24 hours. Your device deletes it about 24 hours after it expires, so it is usually deleted after about 2 days. Data already cached on their device cannot be deleted by us.</li>
-<li>Friend data is tied to the iCloud account you are signed into. If you switch or sign out of iCloud, you may temporarily not see friends from the previous account. Avoid switching accounts without a backup. We are improving per-account isolation and restore.</li>
-</ul>
-<p>Only send your invite link to the person you want to add.</p>
-<h3>Adding friends</h3>
-<ul>
-<li>Face to Face, QR code, or link invites are one-time (a link is short-lived and works only once). Send them only to the person you want to add.</li>
-<li>While adding a friend, KickLog may leave temporary records in Apple's CloudKit public database. What is publicly readable is mainly irreversible codes and an expiry time; the rest is encrypted. After expiry, the sender's device deletes them (timing follows the expiry note above).</li>
-<li>If a mutual add is interrupted, KickLog may put someone who already entered the handshake back on your friend share without you tapping Add Friend again, so the handshake can finish. Someone you deliberately removed is not added back automatically.</li>
-<li>Friend requests and confirmations may show a lock-screen notification with fixed text that contains no nickname or account.</li>
-</ul>
-<p><em>Team features are not yet available. This policy will be updated before they launch.</em></p>
+<h2>3. Who can see your data</h2>
+<p>KickLog has no social features. Your data is stored on your own devices and in your own private iCloud, and no other KickLog user can see it.</p>
 <h2>4. Data sent to Apple</h2>
 <ul>
 <li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit. Routes and precise locations are never sent.</li>
 <li>Maps: the heat map satellite view and the share long image load map tiles from Apple Maps for the area around the pitch. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. KickLog does not store this request or send it anywhere else.</li>
-<li>iCloud sync and friend sharing run on Apple CloudKit and are covered by Apple's Privacy Policy.</li>
-<li>Push notifications: to receive message center notices promptly, the app creates a CloudKit subscription for your recipient code, and Apple delivers the push notifications.</li>
+<li>iCloud sync runs on Apple CloudKit and is covered by Apple's Privacy Policy.</li>
 <li>We use no third-party analytics, advertising, or tracking SDKs.</li>
 </ul>
 <h2>5. Children</h2>
 <p>We do not knowingly collect children's contact information.</p>
 <h2>6. Deleting your data</h2>
 <ul>
-<li>Delete matches or friends in the app.</li>
+<li>Delete matches in the app.</li>
 <li>Deleting the app removes its data from the device.</li>
 <li>Delete KickLog's iCloud data in iPhone Settings &gt; your name &gt; iCloud &gt; Manage Account Storage.</li>
 <li>Workouts saved to Health can be deleted in the Health app.</li>
