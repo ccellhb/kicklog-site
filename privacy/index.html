@@ -19,13 +19,14 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 <body><main>
 <p class="nav"><a href="../">KickLog 踢迹</a> · <a href="zh/" hreflang="zh-Hans">中文</a></p>
 <h1>KickLog Privacy Policy</h1>
-<p class="meta">Effective date: 2026-10-19 · Last updated: 2026-10-20</p>
+<p class="meta">Effective date: 2026-10-22 · Last updated: 2026-10-22</p>
 <p>KickLog records football matches with Apple Watch. We run no servers of our own, show no ads, do not track you, and never sell data. Your data stays on your devices. Some of it syncs to your own iCloud, as described below.</p>
 <h2>1. Data we use</h2>
 <h3>Match and health data</h3>
 <ul>
-<li>Location (distance, route, heat map), heart rate, steps, and speed recorded by Apple Watch during a match.</li>
-<li>Heart rate, resting heart rate, resting energy, date of birth, sex, body mass, running speed, steps, and past Soccer workouts read from Health, used to calculate match stats, heart-rate zones, calories, and Work Rate.</li>
+<li>Location (distance, route, heat map), heart rate, steps, and speed recorded by Apple Watch during a match. Apple Watch also uses Motion &amp; Fitness data (steps) to estimate distance indoors or when GPS is weak.</li>
+<li>Key moments you mark on Apple Watch during a match (goal, assist, or ★): the time, and the spot on the pitch where you marked it, taken from the Watch's GPS. If the Watch has no GPS fix at that moment, only the time is saved. On iPhone you can give a ★ a type or delete any moment.</li>
+<li>Heart rate, resting heart rate, active and resting energy, walking and running distance, date of birth, sex, body mass, running speed, steps, and past Soccer workouts (with their routes) read from Health, used to record matches, calculate match stats, heart-rate zones, calories, and Work Rate, and import past matches.</li>
 <li>You can import past Soccer workouts from Health into KickLog matches on your device. If an import overlaps a Watch recording, the Watch recording is kept. Imported matches may lack stints or attack direction and are marked incomplete.</li>
 <li>Each match is saved to Health as a Soccer workout (duration, on-pitch distance, active and resting energy, heart rate and route).</li>
 <li>Data read from Health is never used for advertising or marketing and is never shared with third parties.</li>
@@ -37,34 +38,45 @@ footer{margin-top:48px;color:#AEB5A8;font-size:.9em;border-top:1px solid #2A302A
 </ul>
 <h3>iPhone location</h3>
 <ul>
-<li>While Using: to recognize your pitch, support local weather lookups (WeatherKit receives only an about 1 km pitch cell derived from the match, not continuous tracking), and show satellite maps around the pitch. Match track and distance are still recorded on Apple Watch.</li>
+<li>While Using: to recognize your pitch, support local weather lookups (see "Weather" in section 3), and show satellite maps around the pitch. Match track and distance are still recorded on Apple Watch.</li>
 <li>Always (only if you turn on Pitch Arrival Reminders): the system checks on your iPhone whether you have arrived at a saved pitch and can remind you to start recording. That check happens on your iPhone; KickLog has no server of its own that receives this location. KickLog does not look up pitches online.</li>
 </ul>
-<h3>Photos</h3>
+<h3>Photos and share cards</h3>
 <ul>
 <li>Photos access is used only to save share cards you create.</li>
+<li>Share cards and share long images can show your match stats, heart-rate charts, heat map, pitch name, and, if you choose it, a satellite map of the pitch. They leave your iPhone only when you save or share them. Key moments are not shown on them.</li>
 </ul>
 <h2>2. Where data is stored</h2>
 <ul>
 <li>On your devices.</li>
-<li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. When iCloud sync is on, your nickname and avatar sync to this private database, and so does your saved pitch library (names, coordinates, and boundaries). Age, body mass, sex, resting heart rate, and achievements stay on your device and are not synced to iCloud. We cannot access your iCloud content.</li>
-<li>In backup files you export yourself. Backups include match records, your profile (nickname, avatar, age, body mass, sex, resting heart rate, and position), achievements, and some settings (language, theme, and in-match reminders). They do not include your saved pitch library, some on-device caches and settings, or leftover on-device state from retired social features.</li>
-<li>Keep backup files safe. They contain health-related data.</li>
+<li>In your own private iCloud database (Apple CloudKit), to sync between your devices and restore after reinstalling. This only happens when iCloud sync is on. What syncs:
+<ul>
+<li>Match records: time, on-pitch and rest periods, distance, speed, sprints, steps, the GPS route recorded by Apple Watch, the pitch the match is tagged to, and, when it was needed for weather, your iPhone's rough location (about 1 km) at kickoff.</li>
+<li>Key moments (goal, assist, ★), each with the spot on the pitch where you marked it, plus a note of which moments you deleted so they don't come back.</li>
+<li>Your nickname, avatar, preferred position, and some settings (language, theme, and in-match reminders).</li>
+<li>Your saved pitch library (names, coordinates, and boundaries).</li>
+</ul>
+Health data does not go to iCloud: heart rate, calories, age, body mass, sex, resting heart rate, and match scores stay on your iPhone. For matches imported from Health, the route, distance, and steps also stay on your iPhone; a new iPhone reads them from Health again. Achievements stay on your device too. If you turn iCloud sync off, nothing new is uploaded, and what is already in iCloud stays there until you delete it (see section 5). We cannot access your iCloud content.</li>
+<li>In backup files you export yourself. Backups include complete match records (including GPS routes, heart rate, and key moments with the spot where you marked them), your profile (nickname, avatar, age, body mass, sex, resting heart rate, and position), achievements, and some settings (language, theme, and in-match reminders). They do not include your saved pitch library, some on-device caches and settings, or leftover on-device state from retired social features.</li>
+<li>Keep backup files safe. They contain health data and the places where you played, and they are not password-protected: anyone who has the file can read it.</li>
+<li>In your iCloud Keychain, if you use it: two small items. One helps KickLog tell whether a backup file was changed outside the app; the other remembers which of your matches came with the free full report. They follow your Apple ID even when KickLog's iCloud sync is off, and may stay after you delete the app.</li>
 </ul>
 <h2>3. Data sent to Apple</h2>
-<p>KickLog does not connect to any developer-run or third-party server. It only uses Apple services: the iCloud private database, Apple Maps tiles, and WeatherKit (including WeatherKit's attribution logo). External links, such as the privacy page and the feedback email, open only when you tap them.</p>
+<p>KickLog does not connect to any developer-run or third-party server. It only uses Apple services: iCloud (your private database, plus the one-time cleanup described below), iCloud Keychain, Apple Maps tiles, and WeatherKit (including WeatherKit's attribution logo). External links, such as the privacy page and the feedback email, open only when you tap them.</p>
 <ul>
-<li>Weather: to show weather in match reports, we send the approximate area of the pitch (about 1 km) and the kickoff time window to Apple WeatherKit, and we load WeatherKit's attribution logo. Routes and precise locations are never sent.</li>
+<li>Weather: weather is off unless you turn it on in Settings. To show weather in match reports, we send a rough location (rounded to about 1 km) and the match time to Apple WeatherKit, and we load WeatherKit's attribution logo. The rough location comes from the match's Apple Watch route or your saved pitch. If neither is available, it comes from your iPhone's rough location around kickoff: while weather is on, your iPhone keeps a rough location history for the last 24 hours, on the device only, and when it is used, that rough kickoff location is saved with the match. Routes and precise locations are never sent. Weather results are kept only briefly and are not saved with matches.</li>
 <li>Maps: the heat map satellite view, and share cards and share long images when a satellite background is chosen, load map tiles from Apple Maps. This request reveals the approximate area shown on the map to Apple and is governed by Apple's Privacy Policy. Nothing is uploaded. KickLog does not store this request or send it anywhere else.</li>
 <li>iCloud sync runs on Apple CloudKit and is covered by Apple's Privacy Policy.</li>
+<li>Retired friends and teams: test versions of KickLog had friends and teams. Those features have been removed. If your iCloud account used them, KickLog runs a one-time cleanup that deletes what you left in iCloud for them and leaves any team or friend shares others gave you. It does not upload anything new for these features.</li>
 <li>We use no third-party analytics, advertising, or tracking SDKs.</li>
 </ul>
 <h2>4. Children</h2>
 <p>We do not knowingly collect children's contact information.</p>
 <h2>5. Deleting your data</h2>
 <ul>
-<li>Delete matches in the app.</li>
-<li>Deleting the app removes its data from the device.</li>
+<li>Delete matches in the app. When iCloud sync is on, a deleted match is also removed from your iCloud. For matches KickLog recorded, you can also choose to delete the workout from Health.</li>
+<li>Deleting the app removes its data from the device. It does not remove KickLog's data in iCloud or the iCloud Keychain items described in section 2.</li>
+<li>Turning off iCloud sync stops new uploads but does not delete what is already in iCloud.</li>
 <li>Delete KickLog's iCloud data in iPhone Settings &gt; your name &gt; iCloud &gt; Manage Account Storage.</li>
 <li>Workouts saved to Health can be deleted in the Health app.</li>
 </ul>
